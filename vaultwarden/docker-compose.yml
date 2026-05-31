@@ -1,0 +1,15 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: always
+    ports:
+      - "8443:80"
+    volumes:
+      - vaultwarden-data:/data
+      - /etc/vaultwarden/certs:/ssl
+    environment:
+      - ROCKET_TLS={certs="/ssl/fedora-server.tailb48ad6.ts.net.crt",key="/ssl/fedora-server.tailb48ad6.ts.net.key"}
+
+volumes:
+  vaultwarden-data:
