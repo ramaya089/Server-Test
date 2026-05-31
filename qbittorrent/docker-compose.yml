@@ -1,0 +1,19 @@
+services:
+  deluge:
+    image: lscr.io/linuxserver/deluge:latest
+    container_name: deluge
+    restart: always
+    ports:
+      - "8090:8112"
+      - "6881:6881"
+      - "6881:6881/udp"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Chicago
+    volumes:
+      - deluge-config:/config
+      - /home/user/media/downloads:/downloads
+
+volumes:
+  deluge-config:
